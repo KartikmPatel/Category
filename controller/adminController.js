@@ -4,31 +4,31 @@ const session = require('express-session');
 
 // Home Page
 const showHome =async (req,res) => {
-    if (!req.session.username) {
-        res.redirect("/login");
-    }
-    else {
-        res.render("index",{
-            username: "Welcome " + req.session.username,
-            users:req.session.username
-        });
-    }
-    // res.render("index");
+    // if (!req.session.username) {
+    //     res.redirect("/login");
+    // }
+    // else {
+    //     res.render("index",{
+    //         username: "Welcome " + req.session.username,
+    //         users:req.session.username
+    //     });
+    // }
+    res.render("index");
 }
 
 // Admin page
 const showAdmin = async (req,res) => {
-    if (!req.session.username) {
-        res.redirect("/login");
-    }
-    else {
+    // if (!req.session.username) {
+    //     res.redirect("/login");
+    // }
+    // else {
         const categoryDetail = await Category.find()
         res.render("Admin", {
             name: "Display",
             users:req.session.username,
             category: categoryDetail,
         });
-    }
+    // }
     // res.render("Admin");
 }
 
