@@ -1,0 +1,52 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navigation bar</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" referrerpolicy="no-referrer" />
+
+
+  <link rel="stylesheet" href="responsive.css">
+
+    {{!-- <link rel="stylesheet" href="/views/partials/header.css"> --}}
+
+</head>
+<body>
+  <header class="head-area">
+    <div class="header-container">
+      <div class="logo">
+        <h1><span>Deep</span>Technology</h1>
+      </div>
+      <div class="mobile-nav">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="menu">
+        <ul class="menu1">
+          {{#if users}}
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="#" class="">About</a></li>
+          <li><a href="/contact" class="">Contact</a></li>
+          <li><a href="/logout" class="">Logout</a></li>
+          {{else}}
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="#" class="">About</a></li>
+          <li><a href="#" class="">Contact</a></li>
+          <li><a href="/login" class="">Login</a></li>
+          <li><a href="/register" class="">Sign Up</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+     
+  </header>
+
+  <script>
+    $(document).ready(function(){
+      $(".mobile-nav i").click(function(){
+          $(".menu").toggleClass('mobile-menu');
+      });
+    })
+  </script>
+</body>

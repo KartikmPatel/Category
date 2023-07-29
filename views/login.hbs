@@ -1,0 +1,46 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        {{>header}}
+		{{>headerCss}}
+		{{>loginCss}}
+        <div class="container">
+	<div class="login_box">
+
+		{{#if message}}
+		<span style="color:red;margin-left:25%;font-weight:bold">{{message}}</span>
+		{{/if}}
+
+		<h1>Login</h1>
+
+		<form action="/login" method="post">
+
+		<div class="input_box">
+			<input type="email" name="email" required>
+			<label for="">Email</label>
+			<ion-icon class="icon " name="mail-outline"></ion-icon>
+		</div>
+		<div class="input_box">
+			<input type="password" name="password" required>
+			<label for="">password</label>
+			<ion-icon class="icon" name="lock-closed-outline"></ion-icon>
+		</div>
+		<div class="login">
+			<button type="submit">Log in </button>
+		</div>
+		</form>
+		<div>
+			<div class="reg">
+				<p>don't have a account </p>
+				<a href="/register">registration</a>
+			</div>
+		</div>
+	</div>
+ </div>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    </body>
+</html>
