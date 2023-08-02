@@ -62,11 +62,23 @@ const editCategory = async (req,res) => {
     res.render('Admin');
 }
 
+const uploadImage = (req, res) => {
+    if (!req.file) {
+        return res.status(400).send('No image uploaded.');
+    }
+
+    // Do any additional processing with the uploaded file here, if needed
+
+    // Respond with a success message
+    res.send('Image uploaded successfully.');
+};
+
 const addNews = async (req,res) => {
     const NewsData =await new News({
         title:req.body.title,
         authorName:req.body.aname,
         description:req.body.des,
+        image: req.file.filename,
         category_id:req.body.categoryName
     })
     NewsData.save();
@@ -96,5 +108,6 @@ module.exports = {
     editCategory,
     news,
     addNews,
+    uploadImage,
     deleteNews
 }

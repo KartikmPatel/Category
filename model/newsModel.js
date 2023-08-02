@@ -13,10 +13,10 @@ const newsData = new mongoose.Schema({
     description: {
         type:String,
     },
-    // image: {
-    //     type: String,
-    //     required:true,
-    // },
+    image: {
+        type: String,
+        required:true,
+    },
     category_id:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Category',

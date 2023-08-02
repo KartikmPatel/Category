@@ -3,6 +3,7 @@ const path = require('path');
 const hbs = require('hbs');
 const session = require('express-session');
 const app = express();
+const bcrypt = require('bcrypt');
 const { exit } = require('process');
 require("./db/conn");
 
@@ -15,6 +16,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.use(express.static('public'));
 
 // View Files set-up
 const templatePartial = path.join(__dirname, "./views/partials");

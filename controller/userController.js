@@ -1,4 +1,5 @@
 const path = require('path');
+const bcrypt = require('bcrypt');
 const Register = require('../model/registerModel');
 const session = require('express-session')
 
@@ -30,11 +31,12 @@ const register = async (req,res) => {
         // {
             // if(req.body.password === res.body.cpassword)
             // {
+                password = req.body.password;
                 const user = await new Register({
                     firstname: req.body.username,
                     email: req.body.email,
                     pnumber: req.body.number,
-                    password: req.body.password,
+                    password: password,
                 })
                 user.save();
                 res.redirect("/");
@@ -63,7 +65,9 @@ const login = async (req,res) => {
         // console.log(session.id);
         // console.log(check.password);
         // console.log(check.firstname);
-        if (check.password == req.body.password) {
+        const password = req.body.password;
+        const isMatch = await bcrypt.compare(password,check.password);
+        if (isMatch) {
             if (check.firstname == "Admin") {
                 res.redirect("/dashboard")
             }
